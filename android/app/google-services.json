@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "302101008580",
+    "project_id": "imanieye-650a9",
+    "storage_bucket": "imanieye-650a9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302101008580:android:5c1c792eb4441ba0d77991",
+        "android_client_info": {
+          "package_name": "com.example.imanieye_students"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302101008580-f027ci41eqk3vh8sga6d96emp65ace5i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYCMqcLQ6MtB6nec4plFsndvG5-JDC4tU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302101008580-f027ci41eqk3vh8sga6d96emp65ace5i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
