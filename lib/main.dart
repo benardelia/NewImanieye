@@ -10,6 +10,19 @@ void main() async {
   await Firebase.initializeApp();
   await Hive.initFlutter();
 
+  Box box = await Hive.openBox('credentials');
+
+  if (box.isNotEmpty) {
+    Login.isAdmin = box.get('admin');
+    Login.superAdmin = box.get('superadmin');
+    Login.userId = box.get('userid');
+    Login.studentsIDs = box.get('studentids');
+    Login.userName = box.get('username');
+
+    print(box.values);
+  }
+  await Future.delayed(Duration(seconds: 3));
+
   runApp(const MaterialApp(
     home: Home(),
     debugShowCheckedModeBanner: false,
@@ -31,7 +44,20 @@ class Home extends StatelessWidget {
                         borderRadius: BorderRadius.circular(24)),
                     fixedSize:
                         Size(MediaQuery.of(context).size.width * 0.8, 20)))),
-        home: Login());
+        initialRoute: FirebaseAuth.instance.currentUser == null
+            ? '/sign-in'
+            : '/pregnancy',
+        routes: {
+          '/sign-in': (context) {
+            return Login();
+          },
+          '/pregnancy': (context) {
+            return MainPage(
+              isAdmin: Login.isAdmin,
+              isSuperAdmin: Login.superAdmin,
+            );
+          },
+        });
   }
 }
 
@@ -47,6 +73,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  Box box = Hive.box('credentials');
   bool hidePassword = true;
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
@@ -155,6 +182,14 @@ class _LoginState extends State<Login> {
                       Login.userId = FirebaseAuth.instance.currentUser!.uid;
                       Login.superAdmin = docsnap.data()!['superadmin'] ?? false;
                       Login.isAdmin = admin;
+
+                      box.putAll({
+                        'admin': admin,
+                        'superadmin': superAdmin,
+                        'studentids': Login.studentsIDs,
+                        'username': Login.userName,
+                        'userid': Login.userId,
+                      });
 
                       if (!mounted) return;
                       Navigator.push(

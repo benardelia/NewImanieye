@@ -28,7 +28,7 @@ class MainPage extends StatelessWidget {
               icon: Icon(Icons.logout),
               onPressed: () async {
                 await FirebaseAuth.instance.signOut();
-                Navigator.of(context).pop();
+                Navigator.pushReplacementNamed(context, '/sign-in');
               },
             ),
           ]),

@@ -23,6 +23,12 @@ class _StudentDashboardState extends State<StudentDashboard> {
   // methode to retrieve data from the firebase to show to user
 
   Widget showData(String key, String innerKey, Map<String, dynamic> data) {
+    var over = 0;
+    if (key == 'Kitabia') over = 44;
+    if (key == 'kijamii') over = 24;
+    if (key == 'Kiakili') over = 16;
+    if (key == 'kimwili') over = 16;
+
     return GridView.builder(
         shrinkWrap: true,
         padding: const EdgeInsets.all(8.0),
@@ -36,7 +42,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
               elevation: 2.0,
               child: Center(
                 child: Text(
-                  '${months[index]}: ${data[key][innerKey][index]}',
+                  '${months[index]}: ${data[key][innerKey][index]}/$over',
                   style: const TextStyle(
                       fontSize: 12, fontWeight: FontWeight.bold),
                 ),
@@ -115,7 +121,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                   snapshot.data!.data() as Map<String, dynamic>;
               var data = StudentDashboard.data;
               List<double> jumlaKuu = Graph().jumlaKuu(data);
-              
+
               return SingleChildScrollView(
                 padding: const EdgeInsets.all(10),
                 child: Column(
@@ -133,7 +139,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                       ' DINI: ${data['Taarifa za mwanafunzi']['dini']}',
                       style: headingStyle,
                     ),
-                     Text(
+                    Text(
                       ' SHULE: ${data['Taarifa za mwanafunzi']['shule']}',
                       style: headingStyle,
                     ),
@@ -185,7 +191,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     const SizedBox(
                       height: 10,
                     ),
-                    showData('kimwili', 'MAENDELEO YA KIMWILI, JUMLA', data),
+                   showData('kimwili', 'MAENDELEO YA KIMWILI, JUMLA', data),
                     const Text(
                         'MAENDELEO YA JUMLA (KIAKILI, KIMWILI, KIJAMII, KITABIA)'),
                     const SizedBox(
@@ -196,6 +202,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                 ),
               );
             } catch (e) {
+              print(e.toString());
               return const Padding(
                 padding: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
                 child: Text(

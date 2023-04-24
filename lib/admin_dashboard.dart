@@ -137,6 +137,7 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                                           children: [
                                             TextButton(
                                               onPressed: () async {
+                                                String lastEvaluation = '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
                                                 var personInfo = {
                                                   'ID': documents[index][
                                                           'Taarifa za mwanafunzi']
@@ -159,8 +160,7 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                                                   'tarehe': documents[index][
                                                           'Taarifa za mwanafunzi']
                                                       ['tarehe'],
-                                                  'tareheYaMwisho':
-                                                      '${DateTime.now().year} - ${DateTime.now().month} - ${DateTime.now().day}',
+                                                  'tareheYaMwisho': lastEvaluation,
                                                   'aliepitia': documents[index][
                                                           'Taarifa za mwanafunzi']
                                                       ['aliepitia']

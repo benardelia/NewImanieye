@@ -77,7 +77,7 @@ class DatabaseManager {
     }
 
     try {
-      await students.doc(Login.studentsIDs[0]).update(data);
+      await students.doc(Login.studentsIDs[0]).set(data);
       box.clear();
       box.close();
     } on FirebaseException catch (e) {
