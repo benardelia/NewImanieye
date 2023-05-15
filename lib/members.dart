@@ -57,11 +57,11 @@ class _MembersState extends State<Members> {
                     itemCount: documents.length,
                     itemBuilder: (context, index) {
                       String subtitle =
-                          documents[index]['studentids'][0] ?? 'Admin';
+                         documents[index]['admin'] ? 'Admin' : 'Mzazi';
 
                       return ListTile(
                         title: Text('${documents[index]['name']}'),
-                        subtitle: Text('ID: $subtitle'),
+                        subtitle: Text('Status: $subtitle'),
                         trailing: SingleChildScrollView(
                             physics: NeverScrollableScrollPhysics(),
                             child:

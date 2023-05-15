@@ -59,10 +59,14 @@ class DatabaseManager {
         data['ID'] = studentId;
         await students.doc(studentId).set({'Taarifa za mwanafunzi': data});
       });
-
-      Registration.StudentID.text = studentId;
+      if (Registration.StudentID.text.isNotEmpty) {
+        Registration.StudentID.text =
+            Registration.StudentID.text + " " + studentId;
+      } else {
+        Registration.StudentID.text = studentId;
+      }
     } catch (e) {
-      Registration.StudentID.text = 'Tatizo! Angalia intaneti yako';
+      // Registration.StudentID.text = 'Tatizo! Angalia intaneti yako';
     }
   }
 

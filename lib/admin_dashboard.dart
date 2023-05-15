@@ -137,7 +137,8 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                                           children: [
                                             TextButton(
                                               onPressed: () async {
-                                                String lastEvaluation = '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
+                                                String lastEvaluation =
+                                                    '${DateTime.now().year}-${DateTime.now().month}-${DateTime.now().day}';
                                                 var personInfo = {
                                                   'ID': documents[index][
                                                           'Taarifa za mwanafunzi']
@@ -160,7 +161,8 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                                                   'tarehe': documents[index][
                                                           'Taarifa za mwanafunzi']
                                                       ['tarehe'],
-                                                  'tareheYaMwisho': lastEvaluation,
+                                                  'tareheYaMwisho':
+                                                      lastEvaluation,
                                                   'aliepitia': documents[index][
                                                           'Taarifa za mwanafunzi']
                                                       ['aliepitia']
@@ -202,7 +204,7 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            StudentData()));
+                                                            StudentData(studentIndex: 0,)));
                                               },
                                               child: Text('Tazama Maendeleo'),
                                               style: btnStyle,

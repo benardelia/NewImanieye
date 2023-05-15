@@ -5,8 +5,9 @@ import 'package:imanieye_students/main.dart';
 
 class StudentDashboard extends StatefulWidget {
   const StudentDashboard({
-    super.key,
+    super.key, required this.studentIndex,
   });
+  final int studentIndex;
   static late Future<DocumentSnapshot<Map<String, dynamic>>> students;
   static late Map<String, dynamic> data;
 
@@ -80,9 +81,10 @@ class _StudentDashboardState extends State<StudentDashboard> {
       fontSize: 15,
       fontWeight: FontWeight.bold);
   // to be deal with indexes
-  String jina = Login.studentsIDs[0];
+ 
   @override
   void initState() {
+     String jina = Login.studentsIDs[widget.studentIndex];
     super.initState();
     dataSnapshot(jina);
   }
@@ -191,7 +193,7 @@ class _StudentDashboardState extends State<StudentDashboard> {
                     const SizedBox(
                       height: 10,
                     ),
-                   showData('kimwili', 'MAENDELEO YA KIMWILI, JUMLA', data),
+                    showData('kimwili', 'MAENDELEO YA KIMWILI, JUMLA', data),
                     const Text(
                         'MAENDELEO YA JUMLA (KIAKILI, KIMWILI, KIJAMII, KITABIA)'),
                     const SizedBox(

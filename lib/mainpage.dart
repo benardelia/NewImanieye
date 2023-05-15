@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:imanieye_students/admin_dashboard.dart';
 import 'package:imanieye_students/main.dart';
@@ -43,7 +44,7 @@ class MainPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>  Registration(
+                              builder: (context) => Registration(
                                     isNewAdmin: true,
                                   )));
                     },
@@ -75,10 +76,45 @@ class MainPage extends StatelessWidget {
                           ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(
                                   'Hakuna mwanafunzi aliye kwenye akaunti yako')))
-                          : Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => StudentData()));
+                          : Login.studentsIDs.length == 1
+                              ? Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => StudentData(
+                                            studentIndex: 0,
+                                          )))
+                              : showDialog(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                        title: Text('Chagua mwanafunzi'),
+                                        content: SingleChildScrollView(
+                                          child: ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount: Login.studentsIDs.length,
+                                              itemBuilder: (context, index) =>
+                                                  Padding(
+                                                    padding: const EdgeInsets.all(3.0),
+                                                    child: ListTile(
+                                                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                     dense: true,
+                                                     tileColor: Colors.green.withOpacity(0.7),
+                                                      leading: Text(
+                                                          'Mwanafunzi namba ${index + 1}'),
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) =>
+                                                                        StudentData(
+                                                                          studentIndex:
+                                                                              index,
+                                                                        )));
+                                                      },
+                                                    ),
+                                                  )),
+                                        ),
+                                      ));
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text(

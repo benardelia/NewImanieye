@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:imanieye_students/databasemanager.dart';
 import 'package:imanieye_students/main.dart';
 
-
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
 
@@ -156,8 +155,6 @@ class _HomepageState extends State<Homepage> {
 
                           try {
                             await DatabaseManager().addStudent(personInfo);
-                            
-                            
 
                             Navigator.of(context).pop();
                           } catch (e) {

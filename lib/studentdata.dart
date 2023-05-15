@@ -7,8 +7,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StudentData extends StatelessWidget {
   StudentData({
-    super.key,
+    super.key, required this.studentIndex,
   });
+  final int studentIndex;
 
   final TextEditingController maoni = TextEditingController();
 
@@ -24,7 +25,7 @@ class StudentData extends StatelessWidget {
               tabs: [Text('Takwimu'), Text('Grafu'), Text('Maoni')]),
         ),
         body:
-            const TabBarView(children: [StudentDashboard(), Graph(), Maoni()]),
+             TabBarView(children: [StudentDashboard(studentIndex: studentIndex,), Graph(), Maoni()]),
         floatingActionButton: Login.isAdmin
             ? SizedBox.shrink()
             : FloatingActionButton.extended(

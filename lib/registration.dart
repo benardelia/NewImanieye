@@ -181,7 +181,7 @@ class _RegistrationState extends State<Registration> {
                                 content: Text('Registration successful'),
                                 duration: Duration(seconds: 5),
                               ));
-                              Registration.StudentID.text = '';
+                              Registration.StudentID.clear();
                               Navigator.pop(context);
                             } on FirebaseAuthException catch (e) {
                               showDialog(
