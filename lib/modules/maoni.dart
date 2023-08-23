@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:imanieye_students/graph.dart';
-import 'package:imanieye_students/studentdashboard.dart';
+import 'package:imanieye_students/accessories/graph.dart';
+import 'package:imanieye_students/modules/studentdashboard.dart';
 
 class Maoni extends StatelessWidget {
   const Maoni({super.key});

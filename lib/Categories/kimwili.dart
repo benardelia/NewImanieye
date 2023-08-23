@@ -3,7 +3,7 @@ import 'package:imanieye_students/accessories/fields.dart';
 import 'package:imanieye_students/accessories/fieldswithheads.dart';
 import 'package:imanieye_students/databasemanager.dart';
 
-import '../tables.dart';
+import '../modules/tables.dart';
 
 class Kimwili extends StatefulWidget {
   const Kimwili({

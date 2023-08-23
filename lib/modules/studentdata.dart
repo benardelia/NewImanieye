@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:imanieye_students/graph.dart';
+import 'package:imanieye_students/accessories/graph.dart';
 import 'package:imanieye_students/main.dart';
-import 'package:imanieye_students/maoni.dart';
-import 'package:imanieye_students/studentdashboard.dart';
+import 'package:imanieye_students/modules/maoni.dart';
+import 'package:imanieye_students/modules/studentdashboard.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StudentData extends StatelessWidget {

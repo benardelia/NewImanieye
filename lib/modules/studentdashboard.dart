@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:imanieye_students/graph.dart';
+import 'package:imanieye_students/accessories/graph.dart';
 import 'package:imanieye_students/main.dart';
 
 class StudentDashboard extends StatefulWidget {

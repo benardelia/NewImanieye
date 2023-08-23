@@ -2,8 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:imanieye_students/databasemanager.dart';
 import 'package:imanieye_students/main.dart';
-import 'package:imanieye_students/studentdata.dart';
-import 'package:imanieye_students/tables.dart';
+import 'package:imanieye_students/modules/studentdata.dart';
+import 'package:imanieye_students/modules/tables.dart';
 
 class AdminDashBoard extends StatefulWidget {
   AdminDashBoard({key}) : super(key: key);

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:imanieye_students/main.dart';
-import 'package:imanieye_students/registration.dart';
+import 'package:imanieye_students/Authentication/registration.dart';
 
 class DatabaseManager {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;

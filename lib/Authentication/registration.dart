@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:imanieye_students/homepage.dart';
-import 'databasemanager.dart';
+import '../databasemanager.dart';
 import 'dart:math';
 
 class Registration extends StatefulWidget {

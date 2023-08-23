@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:imanieye_students/admin_dashboard.dart';
+import 'package:imanieye_students/modules/admin_dashboard.dart';
 import 'package:imanieye_students/main.dart';
-import 'package:imanieye_students/members.dart';
-import 'package:imanieye_students/registration.dart';
-import 'package:imanieye_students/studentdata.dart';
+import 'package:imanieye_students/modules/members.dart';
+import 'package:imanieye_students/Authentication/registration.dart';
+import 'package:imanieye_students/modules/studentdata.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class MainPage extends StatelessWidget {

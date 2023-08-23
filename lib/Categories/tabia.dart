@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imanieye_students/accessories/fields.dart';
 import 'package:imanieye_students/accessories/fieldswithheads.dart';
 import 'package:imanieye_students/databasemanager.dart';
-import '../tables.dart';
+import '../modules/tables.dart';
 import 'dart:core';
 
 class Tabia extends StatefulWidget {
