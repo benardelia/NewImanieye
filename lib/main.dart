@@ -18,8 +18,6 @@ void main() async {
     Login.userId = box.get('userid');
     Login.studentsIDs = box.get('studentids');
     Login.userName = box.get('username');
-
-    print(box.values);
   }
   await Future.delayed(Duration(seconds: 3));
 
@@ -35,29 +33,32 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            elevatedButtonTheme: ElevatedButtonThemeData(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24)),
-                    fixedSize:
-                        Size(MediaQuery.of(context).size.width * 0.8, 20)))),
-        initialRoute: FirebaseAuth.instance.currentUser == null
-            ? '/sign-in'
-            : '/pregnancy',
-        routes: {
-          '/sign-in': (context) {
-            return Login();
-          },
-          '/pregnancy': (context) {
-            return MainPage(
-              isAdmin: Login.isAdmin,
-              isSuperAdmin: Login.superAdmin,
-            );
-          },
-        });
+      initialRoute:
+          FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/homepage',
+      routes: {
+        '/sign-in': (context) {
+          return Login();
+        },
+        '/homepage': (context) {
+          return MainPage(
+            isAdmin: Login.isAdmin,
+            isSuperAdmin: Login.superAdmin,
+          );
+        },
+      },
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          useMaterial3: true,
+          appBarTheme: AppBarTheme(backgroundColor: Colors.green),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24)),
+                  fixedSize:
+                      Size(MediaQuery.of(context).size.width * 0.8, 20)))),
+    );
   }
 }
 
@@ -231,10 +232,17 @@ class _LoginState extends State<Login> {
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
-                              title: Text(
-                                  'Ingiza anwani ya Barua Pepe, \n\nutatumiwa link ya kubadili Nywila kwenye hii barua pepe tafadhali ingiza anwani sahihi'),
-                              content: TextField(
-                                controller: resetEmail,
+                              title: Text('Ingiza anwani ya Barua Pepe'),
+                              content: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                        '\n\nUtatumiwa link ya kubadili Nywila kwenye hii barua pepe tafadhali ingiza anwani sahihi'),
+                                    TextField(
+                                      controller: resetEmail,
+                                    ),
+                                  ],
+                                ),
                               ),
                               actions: [
                                 ElevatedButton(

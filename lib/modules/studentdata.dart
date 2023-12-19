@@ -7,7 +7,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StudentData extends StatelessWidget {
   StudentData({
-    super.key, required this.studentIndex,
+    super.key,
+    required this.studentIndex,
   });
   final int studentIndex;
 
@@ -19,16 +20,21 @@ class StudentData extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green,
           title: const Text('TAARIFA YA MWANAFUNZI'),
           bottom: const TabBar(
               tabs: [Text('Takwimu'), Text('Grafu'), Text('Maoni')]),
         ),
-        body:
-             TabBarView(children: [StudentDashboard(studentIndex: studentIndex,), Graph(), Maoni()]),
+        body: TabBarView(children: [
+          StudentDashboard(
+            studentIndex: studentIndex,
+          ),
+          Graph(),
+          Maoni()
+        ]),
         floatingActionButton: Login.isAdmin
             ? SizedBox.shrink()
             : FloatingActionButton.extended(
+                foregroundColor: Colors.white,
                 backgroundColor: Color.fromARGB(255, 3, 41, 4),
                 onPressed: () {
                   showDialog(
@@ -59,7 +65,6 @@ class StudentData extends StatelessWidget {
                                               .doc(Login.studentsIDs[0]);
                                       await student
                                           .update({'Maoni': maoni.text});
-                                      
                                     } catch (e) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(SnackBar(

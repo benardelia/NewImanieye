@@ -16,8 +16,6 @@ class Registration extends StatefulWidget {
 class _RegistrationState extends State<Registration> {
   final formkey = GlobalKey<FormState>();
 
-  final Color mainColor = Colors.green;
-
   final Color textcolor = Colors.black;
 
   final TextEditingController emailController = TextEditingController();
@@ -53,7 +51,6 @@ class _RegistrationState extends State<Registration> {
         child: Scaffold(
             appBar: AppBar(
               title: const Text('IMANIEYE STUDENTS'),
-              backgroundColor: mainColor,
             ),
             body: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -61,7 +58,7 @@ class _RegistrationState extends State<Registration> {
                 child: Column(
                   children: <Widget>[
                     const Text(
-                      'SAJILI MZAZI/MLEZI',
+                      'SAJILI MSIMAMIZI',
                       style: TextStyle(
                         fontSize: 25.0,
                         fontWeight: FontWeight.bold,
@@ -208,9 +205,6 @@ class _RegistrationState extends State<Registration> {
                             }
                           }
                         },
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(mainColor)),
                         child: const Text(
                           'Tuma',
                           style: TextStyle(fontSize: 15.0, color: Colors.black),

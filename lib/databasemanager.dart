@@ -98,4 +98,121 @@ class DatabaseManager {
       debugPrint(e.toString());
     }
   }
+
+  editStudentResult(
+      {required String id,
+      required position,
+      required totalStudents,
+      required int kiswahili,
+      required int english,
+      required int history,
+      required int geography,
+      int? physics,
+      required int biology,
+      int? chemistry,
+      required int bam,
+      required semester,
+      required int civics,
+      required String level,
+      required String mkondo,
+      int? commerce,
+      int? bookkeeping,
+      int? literature}) async {
+    var year = DateTime.now().year;
+    await _firebaseFirestore
+        .collection('results')
+        .doc(id)
+        .collection('$year')
+        .doc(semester)
+        .set({
+      'kiswahili': kiswahili,
+      'english': english,
+      'history': history,
+      'geography': geography,
+      'physics': physics,
+      'biology': biology,
+      'bam': bam,
+      'chemistry': chemistry,
+      'civics': civics,
+      'commerce': commerce,
+      'bookkeeping': bookkeeping,
+      'literature': literature,
+      'position': position,
+      'total': totalStudents,
+      'darasa': level,
+      'mkondo': mkondo,
+      'level': 'secondary',
+      'adminId': FirebaseAuth.instance.currentUser!.uid,
+    });
+  }
+
+  editResultsforPrimary({
+    required String id,
+    required int kiswahili,
+    required int english,
+    required semester,
+    required int hesabu,
+    required int sayansi,
+    required int maarifa,
+    required int uraia,
+    int? stadi,
+    int? ict,
+    required String level,
+    required String mkondo,
+    required position,
+    required totalStudents,
+  }) async {
+    var year = DateTime.now().year;
+    await _firebaseFirestore
+        .collection('results')
+        .doc(id)
+        .collection('$year')
+        .doc(semester)
+        .set({
+      'kiswahili': kiswahili,
+      'english': english,
+      'uraia': uraia,
+      'maarifa': maarifa,
+      'sayansi': sayansi,
+      'hesabu': hesabu,
+      'level': 'primary',
+      'position': position,
+      'total': totalStudents,
+      'darasa': level,
+      'mkondo': mkondo,
+      'stadi': stadi,
+      'ict': ict,
+      'adminId': FirebaseAuth.instance.currentUser!.uid,
+    });
+  }
+
+  editResultsforKidsClass({
+    required String id,
+    required int kusoma,
+    required int kuandika,
+    required semester,
+    required int kuhesabu,
+    required position,
+    required totalStudents,
+    required String level,
+    required String mkondo,
+  }) async {
+    var year = DateTime.now().year;
+    await _firebaseFirestore
+        .collection('results')
+        .doc(id)
+        .collection('$year')
+        .doc(semester)
+        .set({
+      'kusoma': kusoma,
+      'kuandika': kuandika,
+      'kuhesabu': kuhesabu,
+      'position': position,
+      'total': totalStudents,
+      'level': 'kids',
+      'darasa': level,
+      'mkondo': mkondo,
+      'adminId': FirebaseAuth.instance.currentUser!.uid,
+    });
+  }
 }

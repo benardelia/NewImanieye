@@ -13,8 +13,6 @@ class AdminDashBoard extends StatefulWidget {
 }
 
 class _AdminDashBoardState extends State<AdminDashBoard> {
-  Color mainColor = Colors.green;
-
   // check if data exist in a database and retrieve
   checkPrevious(String name) async {
     try {
@@ -43,7 +41,6 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Muongozaji'),
-        backgroundColor: mainColor,
       ),
       body: FutureBuilder(
           future: FirebaseFirestore.instance.collection('students').get(),
@@ -51,7 +48,7 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
               AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
-                child: CircularProgressIndicator(color: mainColor),
+                child: CircularProgressIndicator(),
               );
             }
             if (snapshot.connectionState == ConnectionState.done) {
@@ -204,7 +201,9 @@ class _AdminDashBoardState extends State<AdminDashBoard> {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (context) =>
-                                                            StudentData(studentIndex: 0,)));
+                                                            StudentData(
+                                                              studentIndex: 0,
+                                                            )));
                                               },
                                               child: Text('Tazama Maendeleo'),
                                               style: btnStyle,
